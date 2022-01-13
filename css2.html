@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요점 정리</title>
+	<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="./">시멘틱 태그 요점 정리</a></li>
+				<li><a href="./css.html">CSS 요점 정리</a></li>
+				<li><a href="./css2.html" class="on">CSS와 박스 모델</a></li>
+				<li><a href="./css3.html">트랜지션과 애니메이션</a></li>
+				<li><a href="./css4.html">반응형 웹과 미디어 쿼리</a></li>
+			</ul>
+		</nav>
+
+		<h1>CSS와 박스 모델</h1>
+	</header>
+
+	<p>크롬 개발자모드에서 요소(elememt)의 계산됨(computed) 항목에서 해당 박스가 차지하는 모든 크기를 확인할 수 있다</p>
+
+	<hr>
+
+	<section>
+		<h2>박스 주요 스타일 정리</h2>
+
+		<pre>
+<b>box-sizing</b>:
+  <em>border-box</em> - 테두리까지 포함해서 너비값 지정(주로 사용)
+  <em>content-box</em> - 콘텐츠 영역만 너비값 지정(기본값)
+
+<b>box-shadow</b>:
+  수평 수직 흐림정도 번짐정도 색상 inset(그림자를 안쪽으로 처리)
+
+<b>border-style</b>:
+  <em>none</em> - 테두리 없음, 기본값
+  <em>hidden</em> - 숨김
+  <em>solid</em> - 실선으로
+  <em>dotted</em> - 점선으로
+  <em>dashed</em> - 짧은 직선으로
+  <em>double</em> - 테두리를 이중선으로
+  <em>groove</em> - 테두리를 창에 조각한 것처럼 표시,
+           홈이 파인듯 한 입체감
+  <em>inset</em> - outset 과 반대, groove 와 똑같이 표시
+  <em>outset</em> - 표에서 seperate 일 경우 전체 박스테두리가 창에서
+    튀어나온 것처럼 표시, collapse 일 경우 ridge 와 똑같이 표시
+  <em>ridge</em> - 테두리를 창에서 튀어나온 것처럼 표시
+
+<b>border-width</b>:
+  <em>크기</em> - 임의 크기(대부분)
+  <em>thin</em> - 작게
+  <em>medium</em> - 중간
+  <em>thick</em> - 두껍게
+
+<b>border-color</b>: crimson 모두 통일 혹은 아래처럼 각각 지정 가능
+<b>border-top-color</b>: coral
+<b>border-right-color</b>: rgb(204, 247, 14)
+<b>border-bottom-color</b>: rgb(29, 240, 53)
+<b>border-left-color</b>: rgb(39, 36, 226)
+
+<b>border-radius</b>: 둥글게 처리, 공백으로 4부분 다르게 적용가능
+<b>border-radius</b>: 가로 반지름 / 세로 반지름 (타원을 만들경우)
+		</pre>
+
+		<h3>테스트</h3>
+		<style>
+			#p257a-boxStyle + div,
+			#p257a-boxStyle {
+				box-sizing: border-box;
+				padding: 2rem;
+				margin: 2rem 0;
+				background-color: #eee;
+				text-align: center;
+
+				border-radius: 7rem / 3rem;
+				border: .3rem solid darkblue;
+				border-color: darkblue darkcyan darkgoldenrod darkolivegreen;
+				border-style: groove double ridge dashed;
+			}
+			#p257a-boxStyle + div {
+				border-radius: 0;
+				border-top-left-radius: 10rem 5rem;
+			}
+		</style>
+		<div id="p257a-boxStyle">border-radius: 7rem(가로반지름) / 3rem(세로반지름)</div>
+		<div>
+			<h3>특정 꼭지점만 적용할 경우</h3>
+			<p>border-top-left-radius: 3rem(가로반지름) 5rem(세로반지름)</p>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>margin</h2>
+		<p>(주의) 세로로 정렬시 마진이 겹치면 큰 마진 값을 기준으로 합쳐진다</p>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>배치</h2>
+		<pre>
+<em>img</em> {
+  <b>float</b>: left;
+  <b>margin</b>: .5rem 2rem 1rem 0;
+  <b>width</b>: 200px;
+  <b>border-radius</b>: .5rem;
+}
+		</pre>
+		<style>
+			#p271a_imgbx { padding: 1rem;}
+			#p271a_imgbx img {
+				float: left;
+				margin: .5rem 2rem 1rem 0;
+				width: 200px;
+				border-radius: .5rem;
+			}
+		</style>
+		<div id="p271a_imgbx">
+			<img src="./assets/image/img_01.jpg" alt="">
+			
+			<p>'깐부 할아버지'로 잘 알려진 배우 오영수 씨가 드라마 '오징어 게임' 속 연기로 한국 배우 최초로 미국 골든글로브 연기상을 수상했습니다.</p>
+
+			<p>오 씨가 받은 상은 골든글로브 TV 부문 남우조연상입니다.</p>
+			
+			<p>TV 드라마 남우주연상은 '석세션'의 제메리스트롱에게 돌아가, 이 부문 후보에 오른 이정재 씨의 수상은 불발됐습니다.</p>
+			
+			<p>'오징어 게임'은 456억 원의 상금을 차지하기 위해 목숨을 걸고 벌이는 서바이벌 게임을 그린 드라마로, 오 씨는 '깐부 할아버지'라는 별칭을 얻은 게임 참가자 오일남 역을 맡았습니다.</p>
+		</div>
+
+		<h3>clear 속성 (float 를 해제함)</h3>
+		<pre>
+<b>clear</b>:
+  <em>left</em> - float: left 해제
+  <em>right</em> - float: right 해제
+  <em>both</em> - float 모두 해제
+		</pre>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>위치 지정하기</h2>
+		<pre>
+<b>position</b>:
+  <em>static</em> - 문서 흐름에 따라 배치 (기본값)
+  <em>relative</em> - 위치값 지정이 가능함 (그외 static 과 동일)
+  <em>absolute</em> - relative 값을 지정한 상위 요소를 기준으로 배치
+  <em>fixed</em> - 브라우저 창을 기준으로 배치
+		</pre>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>배경색과 배경범위 지정</h2>
+		<h3>background-color</h3>
+		<p>background-color 속성은 상속되지 않는다. 기본적으로 모든 요소의 배경색이 투명이므로 body의 색을 지정하면 투과되어 보이는 것 뿐이다.</p>
+
+		<h3>background-clip</h3>
+		<pre>
+<b>background-clip</b>: 적용범위를 지정
+  <em>border-box</em> - 박스 모델의 가장 외관인 테두리까지 적용(기본값)
+  <em>padding-box</em> - 테두리를 뺀 패딩 범위까지 적용
+  <em>content-box</em> - 내용(콘텐츠) 부분에만 적용
+		</pre>
+
+		<h3>background-position: 백그라운드 이미지의 위치를 지정</h3>
+		<pre>
+<b>background-position</b>: <em>수평위치</em> <em>수직위치</em>
+  <em>수평위치</em> - left | center | right | 백분율 | 길이값
+  <em>수직위치</em> - top | center | bottom | 백분율 | 길이값
+		</pre>
+		<p>백분율로 표시할 경우 모서리로 부터 떨어진 위치에 이미지의 떨어진 위치를 지정하는 것이다.</p>
+		<p>30% 70% 일 경우, 요소의 가로-30% 세로-70% 인 위치에, 이미지의 가로-30% 세로-70% 의 부분을 맞추는 것</p>
+		<p>의도와는 다른 결과가 나올 수 있다. -_-;;</p>
+
+		<h3>background-origin: 배경 이미지의 적용 범위 조절</h3>
+		<p>background-clip 과 비슷해 보임</p>
+		<pre>
+<b>background-origin</b>:
+  <em>content-box</em> - 내용 부분에만 배경 이미지 표시 (기본값)
+  <em>padding-box</em> - 패딩까지 표시
+  <em>border-box</em> - 테두리까지 표시
+		</pre>
+
+		<h4>테스트</h4>
+		<div style="
+			width: 300px;
+			height: 400px;
+			padding: 20px;
+			color: #fff;
+			text-shadow: -1px -1px 1px #000, 1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000;
+			border: 1rem solid rgba(237, 62, 62, .5);
+			border-radius: 5rem;
+			background-color: rgba(71, 33, 211, .5);
+			background-size: 100% 100%;
+			background-origin: border-box;
+			background-image: url(./assets/image/img_01.jpg);
+			background-position: center center;
+			background-repeat: no-repeat;
+		">
+			백그라운드 적용 테스트
+			<pre style="font-size: 1.2rem;">
+<em>width</em>: 400px;
+<em>height</em>: 200px;
+<em>padding</em>: 20px;
+<em>border</em>: 1rem solid rgba(237, 62, 62, .5);
+<em>border-radius</em>: 5rem;
+<em>background-color</em>: rgba(71, 33, 211, .5);
+<em>background-size</em>: 100%;
+<em>background-origin</em>: border-box;
+<em>background-image</em>: url(이미지경로);
+<em>background-position</em>: center center;
+<em>background-repeat</em>: no-repeat;
+			</pre>
+		</div>
+
+		<h3>background-attachment: 배경 이미지 고정여부 제어</h3>
+		<pre>
+<b>background-attachment</b>:
+  <em>scroll</em> - 스크롤 (기본값)
+  <em>fixed</em> - 배경 이미지 고정
+		</pre>
+
+		<h3>background: 속성 하나로 배경 이미지 속성들 정의</h3>
+		<p>속성 값이 다르므로 순서는 상관 없음</p>
+		<pre>
+<b>background</b>: <em>url(src)</em> <em>no-repeat</em> <em>center</em> <em>bottom</em> <em>fixed</em>;
+		</pre>
+
+		<h3>background-size: 배경 이미지 크기 제어 속성</h3>
+		<pre>
+<b>background-size</b>:
+  <em>auto</em> - 원래 이미지 크기 (기본값)
+  <em>contain</em> - 요소 안에 배경이미지가 모두 들어오도록
+            이미지를 확대, 축소
+  <em>cover</em> - 요소를 모두 덮도록 확대, 축소
+  <em>크기</em> - 너비와 높이를 임의 지정, 하나만 지정할 경우
+        나머지는 자동으로 계산
+  <em>백분율</em> - 요소의 크기를 기준으로 백분율 적용
+		</pre>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>그라데이션 효과</h2>
+		<p>미지원 브라우저를 위해 background: blue; 식으로 단색을 지정해 둔다</p>
+		<style>
+			#p305-a ~ div,
+			#p305-a + div + div,
+			#p305-a + div,
+			#p305-a {
+				width: 100%;
+				height: 150px;
+				border-radius: 1rem;
+				margin: 1rem 0 0;
+				background: blue;
+				background: linear-gradient(to right bottom, blue, rgb(225, 210, 5));
+
+				text-align: center;
+				line-height: 150px;
+				color: white;
+			}
+
+			#p305-a + div {
+				background: linear-gradient(to left top, blue, rgb(225, 210, 5));
+			}
+			#p305-a + div + div {
+				background: linear-gradient(to right top, blue, rgb(225, 210, 5));
+			}
+
+			#p305-a ~ div.deg {
+				background: linear-gradient(45deg, blue, rgb(225, 210, 5));
+			}
+			#p305-a ~ div.deg-2 {
+				background: linear-gradient(225deg, blue, rgb(225, 210, 5));
+			}
+		</style>
+
+		<div id="p305-a">
+			background: linear-gradient(to right bottom, blue, rgb(225, 210, 5))
+		</div>
+
+		<div>
+			background: linear-gradient(to left top, blue, rgb(225, 210, 5))
+		</div>
+
+		<div>
+			background: linear-gradient(to right top, blue, rgb(225, 210, 5))
+		</div>
+
+		<div class="deg">
+			background: linear-gradient(45deg, blue, rgb(225, 210, 5))
+		</div>
+
+		<p>각도는 그라데이션이 끝나는 지점, deg 값 사용</p>
+		<div class="deg-2">
+			background: linear-gradient(225deg, blue, rgb(225, 210, 5))
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>색상 중지점</h2>
+		<pre>
+<b>background</b>:
+  <em>linear-gradient</em>(
+    to bottom, - 방향
+    blue, - 시작 색상
+    white 30%, - 중지점의 색상과 위치
+    red - 끝 색상
+  )
+		</pre>
+
+		<div style="
+			width: 100%;
+			height: 150px;
+			background: blue;
+			background: linear-gradient(90deg, blue, white 30%, yellow 60%, red);
+		">
+			중지점 테스트
+			<p>linear-gradient(90deg, blue, white 30%, yellow 60%, red)</p>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>원형 그라데이션</h2>
+		<pre>
+<b>background</b>: red - 미지원 브라우저용;
+<b>background</b>:
+  <em>radial-gradient</em>(
+    white, yellow, red - 모양을 지정하지 않으면 타원형
+  ),
+
+  <em>radial-gradient</em>(
+    circle(원형) | ellipse(타원형),
+    white,
+    yellow,
+    red
+  )
+		</pre>
+
+		<style>
+			#p309-a > div {
+				margin-top: 1rem;
+				width: 100%;
+				height: 200px;
+				background: radial-gradient(white, yellow, red)
+			}
+
+			#p309-a > div:nth-child(2) {
+				background: radial-gradient(circle closest-side, white, yellow, red);
+			}
+
+			#p309-a > div:nth-child(3) {
+				background: radial-gradient(circle closest-corner, white, yellow, red);
+			}
+
+			#p309-a > div:nth-child(4) {
+				background: radial-gradient(circle farthest-side, white, yellow, red);
+			}
+			
+			#p309-a > div:nth-child(5) {
+				background: radial-gradient(circle farthest-side, white, yellow, red);
+			}
+		</style>
+		
+		<div id="p309-a">
+			<div>
+				모양 지정 안함: 기본 타원형
+				<p>background: radial-gradient(white, yellow, red)</p>
+			</div>
+
+			<div>
+				모양 크기 지정: circle closest-side
+				<p>background: radial-gradient(circle closest-side, white, yellow, red)</p>
+			</div>
+
+			<div>
+				모양 크기 지정: circle closest-corner
+				<p>background: radial-gradient(circle closest-corner, white, yellow, red)</p>
+			</div>
+
+			<div>
+				모양 크기 지정: circle farthest-side
+				<p>background: radial-gradient(circle farthest-side, white, yellow, red)</p>
+			</div>
+
+			<div>
+				모양 크기 지정: circle farthest-corner
+				<p>background: radial-gradient(circle farthest-corner, white, yellow, red)</p>
+			</div>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>원형 그라데이션 - 위치</h2>
+		<pre>
+<b>background</b>: blue;
+<b>background</b>:
+<em>radial-gradient</em>(
+  circle at 20% 20%, - 원형 그라데이션, 20% 20% 위치
+  white,
+  blue
+)
+		</pre>
+		<div style="
+			width: 300px;
+			height: 300px;
+			border-radius: 50% / 50%;
+			background: blue;
+			background: radial-gradient(circle at 10% 10%, white, blue);
+		">
+			background: radial-gradient(circle at 10% 10%, white, blue)
+		</div>
+
+		<h3>색상 중지점</h3>
+		<pre>
+<b>background</b>:
+  <em>radial-gradient</em>(
+    yellow,
+    white 10%, - 중지점 지정
+    blue 50% - 중지점 지정
+  )
+		</pre>
+
+		<div style="
+			width: 100%;
+			height: 300px;
+			background: radial-gradient(yellow, white 10%, orange 50%);
+		">
+			background: radial-gradient(yellow, white 10%, orange 50%)
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>그라데이션으로 패턴 만들기</h2>
+		<pre>
+<b>background</b>:
+  <em>repeating-linear-gradient</em>(
+    yellow,
+    red 20%
+  )
+
+<b>background</b>:
+  <em>repeating-radial-gradient</em>(
+    circle,
+    white,
+    #ccc 10%
+  )
+		</pre>
+
+		<p>% 로 중지점을 정하면 그라데이션이 만나는 지점이 섞일 수 있다</p>
+		<div style="
+			width: 100%;
+			height: 150px;
+			background: repeating-linear-gradient(yellow, red 20%);
+		">background: repeating-linear-gradient(yellow, red 20%)</div>
+
+		<div style="
+			width: 100%;
+			height: 150px;
+			background: repeating-radial-gradient(circle, white, #ccc 10%);
+		">background: repeating-radial-gradient(circle, white, #ccc 10%)</div>
+
+		<h3>중지점 px 로 명확하게 정하기</h3>
+		<div style="
+			width: 100%;
+			height: 150px;
+			background: repeating-linear-gradient(yellow, yellow 20px, red 20px, red 40px);
+		">repeating-linear-gradient(yellow, yellow 20px, red 20px, red 40px)</div>
+
+		<div style="
+			width: 100%;
+			height: 150px;
+			background: repeating-radial-gradient(circle, white, white 10px, #ccc 10px, #ccc 20px);
+		">repeating-radial-gradient(circle, white, white 10px, #ccc 10px, #ccc 20px)</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>선택자</h2>
+		<pre style="background: #eee;">
+<b>div ~ p</b> { 형제 선택자: div 다음에 오는 모든 p 요소 }
+<b>a[href]</b> { 속성 선택자: href 속성이 있는 a 요소 }
+<b>a[target = _blank]</b> {
+  target 이 _blank 인 a 요소
+  이 요소에만 새창 아이콘을 추가하려는 경우 등
+}
+<b>[class ~= mybtn]</b> { 포함 요소 선택: class 명 중에 mybtn 이
+        포함되어 있다면 선택}
+<b>a[title |= us]</b> { title 속성값에 us 또는 us-... 처럼 -으로
+        연결된 것이 있다면 선택}
+<b>a[title ^= eng]</b> { title 속성값이 eng 로 시작하는 a 요소 선택:
+        eng, english 등}
+<b>[href $= xls]</b> { href 속성값이 xls 로 끝나는 요소 선택:
+        확장자 사용시 유용}
+<b>[href *= w3]</b> { href 속성값에 w3 이 어느 위치든 포함되어
+        있다면 선택}
+
+폼요소에 유용하게 사용
+<b>input[required]</b> { 보더 색상을 red 로}
+<b>input[readonly]</b> { 보더를 없애기 등}
+
+폼요소의 타입으로 선택자 적용
+<b>input[type=text]</b> { ... }
+<b>input[type=password]</b> { ... }
+
+가상 클래스 (LoVe HAte 순서로 정의, 순서가 바뀌면 비정상됨)
+<b>a:link</b> { 방문하지 않은 링크}
+<b>a:visited</b> { 방문한 링크}
+<b>a:hover</b> { 마우스 오버}
+<b>a:active</b> { 웹 요소를 활성화 했을 경우}
+<b>a:focus</b> { 웹 요소에 포커스가 맞춰진 경우}
+
+<b>#intro:target</b> { 앵커를 사용해 #intro 의 위치로 링크할 경우,
+      intro 요소의 스타일을 바꿀 수 있다.}
+
+<b>input:enabled</b> { 사용 가능한 상태일 때 선택}
+<b>input:disabled</b> { 사용 불가일 때 선택}
+<b>input:checked + label</b> { 라디오나 체크박스가 체크되었을 때 선택,
+      보통 label 의 스타일을 변경}
+
+<b>input:not([type=radio])</b> { radio 가 아닌 모든 input 을 선택}
+
+구조 가상 클래스
+<b>:only-child</b> { 부모 안에 자식 요소가 하나뿐일 때, 자식 요소 선택}
+<b>A:only-type-of</b> { 부모 안에 A 요소가 하나뿐일 때 선택}
+<b>:first-child</b> { 부모 안의 모든 요소중에서 첫 번째 자식 요소 선택}
+<b>:last-child</b> {부모 안의 모든 요소중에서 마지막 자식 요소 선택}
+<b>A:first-of-type</b> { A 요소 중, 첫 요소의 타입 지정}
+<b>A:last-of-type</b> { A 요소 중, 마지막 요소의 타입 지정}
+<b>:nth-child(n)</b> { n 번째 요소}
+<b>:nth-last-child(n)</b> { 끝에서 n 번째 요소}
+<b>A:nth-of-type(n)</b> { A 요소 중, n 번째 요소}
+<b>A:nth-last-of-type(n)</b> { A 요소 중, 끝에서 n 번째 요소}
+		</pre>
+
+		<style>
+			#p329a b { color: red;}
+			#p329a [class ~= mybtn] {
+				background: blue;
+				color: white;
+			}
+			#p329a p[class |= my] {
+				background: brown;
+				color: yellow;
+			}
+			#p329a a:link { color: black;}
+			#p329a a:visited { color: blue;}
+			#p329a a:hover { color: violet;}
+			#p329a a:active { color: red;}
+
+			#p329a > #intro { width: 100%; height: 300px; background: brown;}
+			#p329a > #intro:target { width: 50%; height: 150px; background: blue; color: white;}
+
+			#p329a input:enabled { border: 2px solid blue;}
+			#p329a input:read-only { border: 2px dotted green;}
+			#p329a input:disabled { border: 2px dashed red}
+		</style>
+		
+		<div id="p329a">
+			<p>
+				<b>아래의 순서로 정의해야 스타일이 정상적으로 적용됨</b>
+				<br>
+				input:enabled { border: 2px solid blue;} <br>
+				<input type="text" value="" placeholder="사용가능"><br>
+				input:read-only { border: 2px dotted blue;} <br>
+				<input type="text" value="읽기 전용 readonly" readonly><br>
+				input:disabled { border: 2px dashed red} <br>
+				<input type="text" value="사용불가능 disabled" disabled>
+			</p>
+
+			<p>
+				#p329a [class ~= <b>mybtn</b>] {
+					border: 1px solid chocolate;
+				}
+			</p>
+			<p>
+				p[class |= <b>my</b>] {
+					background: brown;
+					color: yellow;
+				} -
+				my 또는 my-nnn 과 일치
+			</p>
+
+			<p class="my-btn">mymya my-btn mymya2</p>
+			<p class="mymya my-b-tn mymya2">mymya my-b-tn mymya2</p>
+			<p class="mymya myb-tn mymya2">mymya myb-tn mymya2</p>
+			<p class="mymya mybtn mymya2">mymya <b>mybtn</b> mymya2</p>
+			<p class="mymya mybtn_ mymya2">mymya mybtn_ mymya2</p>
+
+			<a href="#intro">Lo</a>
+			<a href="#aa">Ve</a>
+			<a href="#cc">H</a>
+			<a href="#bb">Ate</a>
+
+			<div id="intro">intro</div>
+
+			<hr>
+
+			<h3>:nth-child(2n+1)</h3>
+			<p>짝수나 홀수 혹은 n번째에 해당하는 것을 선택하고자 할 경우</p>
+			<style>
+				#p346a { width: 100%; border-collapse: collapse;}
+				#p346a tr:nth-child(2n+1) { background:rgb(225, 210, 5);}
+				#p346a tr:nth-child(even) { background: blue; color: white;}
+			</style>
+			<table id="p346a">
+				<tr>
+					<td>
+						<p>tr:nth-child(2n+1) 홀수</p>
+						<p>tr:nth-child(odd) 홀수</p>
+						<p>tr:nth-child(2n) 짝수</p>
+						<p>tr:nth-child(even) 짝수</p>
+					</td>
+				</tr>
+				<tr>
+					<td>테스트 라인 01</td>
+				</tr>
+				<tr>
+					<td>테스트 라인 02</td>
+				</tr>
+				<tr>
+					<td>테스트 라인 03</td>
+				</tr>
+				<tr>
+					<td>테스트 라인 04</td>
+				</tr>
+				<tr>
+					<td>테스트 라인 05</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>가상 요소</h2>
+		<p>가상 클래스는 요소를 선택하기 위한 것이나, 가상 요소는 특정한 곳에 가상으로 요소를 추가하는 것</p>
+
+		<pre>
+<b>::first-line</b> { 첫 번째 줄}
+<b>::first-letter</b> { 첫 번째 글자, 반드시 첫 번째 줄에 있어야 함}
+<b>::before</b> { 지정한 요소 내부의 내용 앞에 추가}
+<b>::after</b> { 지정한 요소 내부의 내용 뒤에 추가}
+		</pre>
+
+		<style>
+			#p346b { background: #eee; padding: 1rem;}
+			#p346b div::before { content: "::before"; display: block; background: yellow;}
+			#p346b div::after { content: "::after"; display: block; background: rgb(79, 255, 143);}
+
+			#p346b p::first-letter { font-family: 'Gugi', cursive; color: rgb(121, 13, 121); font-size: 2rem;}
+			#p346b div::first-line { font-weight: bolder; font-family: 'Gugi';}
+		</style>
+
+		<div id="p346b">
+			<p>'깐부 할아버지'로 잘 알려진 배우 오영수 씨가 드라마 '오징어 게임' 속 연기로 한국 배우 최초로 미국 골든글로브 연기상을 수상했습니다.</p>
+
+			<p>오 씨가 받은 상은 골든글로브 TV 부문 남우조연상입니다.</p>
+
+			<p>TV 드라마 남우주연상은 '석세션'의 제메리스트롱에게 돌아가, 이 부문 후보에 오른 이정재 씨의 수상은 불발됐습니다.</p>
+
+			<p>'오징어 게임'은 456억 원의 상금을 차지하기 위해 목숨을 걸고 벌이는 서바이벌 게임을 그린 드라마로, 오 씨는 '깐부 할아버지'라는 별칭을 얻은 게임 참가자 오일남 역을 맡았습니다.</p>
+
+			<div>
+				'오징어 게임'은 456억 원의 상금을 차지하기 위해 목숨을 걸고 벌이는 서바이벌 게임을 그린 드라마로, 오 씨는 '깐부 할아버지'라는 별칭을 얻은 게임 참가자 오일남 역을 맡았습니다. '깐부 할아버지'로 잘 알려진 배우 오영수 씨가 드라마 '오징어 게임' 속 연기로 한국 배우 최초로 미국 골든글로브 연기상을 수상했습니다.
+
+				오 씨가 받은 상은 골든글로브 TV 부문 남우조연상입니다.
+				
+				TV 드라마 남우주연상은 '석세션'의 제메리스트롱에게 돌아가, 이 부문 후보에 오른 이정재 씨의 수상은 불발됐습니다.
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

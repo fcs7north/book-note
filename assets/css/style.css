@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+
+header > h1,
+.add-google-font { font-family: 'Gugi', cursive;}
+
+html {font-size: 14px;}
+body {font-size: 1rem; max-width: 800px; margin: 0 auto; padding: 1rem;}
+h1 { text-align: center;}
+h2 { padding: 0; margin: 0; line-height: normal;}
+h3 { color: rgb(11, 27, 148); font-size: 1.5rem; letter-spacing: -0.12rem;}
+p { padding: 0; margin-top: .5rem; line-height: 160%;}
+pre { line-height: 160%; font-size: .95rem; overflow-x: auto;}
+pre b { color: rgb(34, 34, 213);}
+pre em {
+	font-style: normal;
+	font-weight: bold;
+	color: rgb(210, 42, 30);
+	font-size: .95rem;
+}
+
+.codebox > h2,
+body > section > h2 {color: rgb(0, 141, 24); font-size: 2.5rem; padding-bottom: .5rem;}
+body > section { padding: 0 0 0 .5rem; line-height: 160%;}
+body > section p { text-indent: .5rem; }
+
+header { background-color: chocolate; padding: .5rem; margin: 0 0 1.5rem; border-radius: .25rem;}
+header h1 { color: #f2f2f2;}
+header ul { padding: 0; margin: 0; list-style: none;}
+header li { display: inline-block; padding: .3rem 0; margin: 0 1rem;}
+header a { text-decoration: none; color: cornsilk; font-size: .95rem; font-weight: bold;}
+header a.on { text-decoration: underline;}
+header a:hover {text-decoration: wavy underline;}
+
+hr { margin: 3rem 0; border: 1px solid rgb(243, 235, 9); box-shadow: 1px 1px 1px rgb(170, 165, 0);}
+
+.codebox { margin: 1rem 0; padding: 1rem; background-color: #f2f2f2;}
+
+/* ================================================================== */
+
+main { padding:0 1rem 0;}
+main > section { position: relative; padding-bottom: 1rem;}
+main > section > span { 
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 200px;
+	height: 100px;
+	background-color: chocolate;
+	text-align: center;
+	line-height: 100px;
+}
+main > section > dl { padding: 0 0 0 220px;}
+main > section > dl > dt { font-weight: bold; margin-top: 1rem;}
+main > section > dl > dd { padding: 0; margin: 0; font-size: .85rem;}
+main > section:last-child > span { background-color: cornflowerblue;}
+
+/* ================================================================== */
+
+footer { padding: 1rem; color: wheat; background-color: darkgreen;}
+footer h1 { font-size: 1.25rem; text-align: left; color: rgb(237, 237, 237);}
+footer a { color: wheat; text-decoration: none;}
+footer a:hover { text-decoration: wavy underline;}
+footer ul { padding: 0; margin: 0; font-size: .9rem;}
+footer li { display: inline-block; padding: 0 .5rem;}
+
+/* ================================================================== */
+
+table, th, td { border: 1px solid chocolate;}
+th, td { padding: 1rem; text-align: center;}
+/* thead > tr:first-child { font-size: 1.25rem; background-color: darkblue; color: darkorange;} */
+/* tbody > tr:nth-child(even) { background-color: chocolate;} */

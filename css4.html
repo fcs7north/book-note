@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요점 정리</title>
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/style.css4.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="./">시멘틱 태그 요점 정리</a></li>
+				<li><a href="./css.html">CSS 요점 정리</a></li>
+				<li><a href="./css2.html">CSS와 박스 모델</a></li>
+				<li><a href="./css3.html">트랜지션과 애니메이션</a></li>
+				<li><a href="./css4.html" class="on">반응형 웹과 미디어 쿼리</a></li>
+			</ul>
+		</nav>
+
+		<h1>반응형 웹과 미디어 쿼리</h1>
+	</header>
+
+	<section>
+		<h2>뷰포트</h2>
+		<p>스마트폰 화면에서 실제로 내용이 표시되는 내용</p>
+
+		<h3>뷰포트 지정하기</h3>
+		<ul>
+			<li><b>width</b> 뷰포트 너비</li>
+			<li><b>height</b> 뷰포트 높이</li>
+			<li><b>user-scalable</b> 확대 | 축소 가능 여부 (yes | no)</li>
+			<li><b>initial-scale</b> 확대 | 축소 초기값 (기본값: 1)</li>
+		</ul>
+		<p>
+			&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+		</p>
+
+		<h3>뷰포트 단위</h3>
+		<pre>
+<b>vw(viewport width)</b>: 1vw 는 뷰포트 너비의 1% 와 같다
+<b>vh(viewport height)</b>: 1vh 는 뷰포트 높이의 1% 와 같다
+<b>vmin(viewport minimum)</b>: 뷰포트의 너비와 높이 중 작은 값의 1% 와 같다
+<b>vmax(viewport maximum)</b>: 뷰포트의 너비와 높이 중 큰 값의 1% 와 같다
+		</pre>
+
+		<div id="p392a">
+			vmin, vmax 테스트<br>
+			안녕하세요
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>미디어 쿼리</h2>
+		<pre>
+<b>@media</b> [<em>only</em> | <em>not</em>] 미디어유형 <em>and (조건)</em> * <em>and (조건)</em>
+
+  <em>only</em>: 미디어 쿼리 미지원 브라우저에서는 무시하고 실행하지 않음
+  <em>not</em>: not 다음에 지정하는 미디어 유형 제외 (예: not tv - TV 유형은 제외)
+  <em>and</em>: 여러 개의 조건 추가 가능 (예: and (max-width: 768px))
+		</pre>
+
+		<h3>미디어 유형</h3>
+		<p>어디에서 사용할 것인지 지정함</p>
+		<ul>
+			<li><b>all</b> 모든 유형</li>
+			<li><b>print</b> 인쇄 장치</li>
+			<li><b>screen</b> 컴퓨터 및 스마트폰의 스크린</li>
+			<li><b>tv</b> 음성과 영상이 동시에 출력되는 TV</li>
+			<li><b>aural</b> 음성합성장치(주로 화면을 읽어 소리로 출력해 주는 장치)</li>
+			<li><b>braille</b> 점자 표시 장치</li>
+			<li><b>handheld</b> 패드처럼 손에 들고 다니는 장치</li>
+			<li><b>projection</b> 프로젝터</li>
+			<li><b>tty</b> 디스플레이 기능이 제한된 장치, 이런 장치에서는 px 단위 사용 불가</li>
+			<li><b>embossed</b> 점자 프린터</li>
+		</ul>
+
+		<h3>예: (min-width: 400px) && (max-width: 450px)</h3>
+		<div id="p396a">
+			<b>해당하지 않음</b>
+		</div>
+
+		<h3>단말기의 가로 너비와 세로 높이 속성</h3>
+		<ul>
+			<li><b>device-width, device-height</b> 가로 너비, 세로 높이 지정</li>
+			<li><b>min-device-width, min-device-height</b> 최소 너비, 최소 높이 지정</li>
+			<li><b>max-device-width, max-device-height</b> 최대 너비, 최대 높이 지정</li>
+		</ul>
+		<h4>아이폰 X 에 적용하려면</h4>
+		<pre>
+<b>@media</b> <em>screen</em> <em>and</em> (<em>min-device-width</em>: 375px) <em>and</em> (<em>min-device-height</em>: 812px) {
+  .....
+}
+		</pre>
+
+		<h3>화면 회전 속성</h3>
+		<p>orientation 속성을 사용하면, 스마트 폰이나 태플릿에서 화면을 가로나 세로로 돌릴 때, 기기의 방향을 확인할 수 있다</p>
+		<ul>
+			<li><b>orientation: portrait</b> 가로 모드</li>
+			<li><b>orientation: landscape</b> 세로 모드</li>
+		</ul>
+		<h4>아이폰 X의 가로 모드는?</h4>
+		<pre>
+<b>@media</b> screen and (min-device-width: 812px) and (<b>orientation:</b> <em>landscape</em>) {
+  .....				
+}
+		</pre>
+		
+		<p>이 외에도 화면 비율, 단말기 화면 비율, 색상당 비트 수 같은 여러가지 미디어 쿼리 조건이 있다 (w3c에서 확인)</p>
+
+		<h3>미디어 쿼리의 중단점</h3>
+		
+		<ul>
+			<li>화면 크기에 따라 다른 css 를 적용할 분기점을 <strong>중단점</strong>이라고 한다.</li>
+			<li>모든 기기를 반영할 수는 없으므로, <b>모바일 | 태블릿 | 데스크톱</b> 정도로만 구분</li>
+			<li><b>모바일 퍼스트 기법:</b> 모바일이 제약 조건이 많으므로, 모바일을 기본으로 작성 (<b>태플릿과 PC의 기본</b>으로도 적용됨)</li>
+			<li style="list-style: none;">
+				<ul>
+					<li>
+						<b>스마트폰</b> 미디어 쿼리 없이 기본 CSS로 작성
+						<br>
+						방향까지 고려한다면, min-width 의 세로를 <em>portrait 320px</em>, <em>landscape 480px</em> 로 지정
+					</li>
+					<li>
+						<b>태블릿</b> <em>세로 크기가 768px 이상</em>일 경우, <em>가로 크기는 데스크톱과 같이 1024px 이상</em>으로 지정
+					</li>
+					<li><b>데스크탑</b> <em>화면 크기가 1024px</em> 이상일 경우 지정</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h3>외부 CSS 파일 연결하기</h3>
+		<ul>
+			<li><b>@import</b> 문으로 CSS 내부에서 사용</li>
+			<li><b>&lt;link rel="stylesheet" media="screen" href="파일주소"&gt;</b> 로 head 태그 안에서 사용 (주로 사용됨)</li>
+		</ul>
+
+	</section>
+	
+	<hr>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요점 정리</title>
+	<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="./">시멘틱 태그 요점 정리</a></li>
+				<li><a href="./css.html" class="on">CSS 요점 정리</a></li>
+				<li><a href="./css2.html">CSS와 박스 모델</a></li>
+				<li><a href="./css3.html">트랜지션과 애니메이션</a></li>
+				<li><a href="./css4.html">반응형 웹과 미디어 쿼리</a></li>
+			</ul>
+		</nav>
+
+		<h1>CSS 요점 정리</h1>
+	</header>
+
+	<section>
+		<h2>스타일 우선순위</h2>
+		<ol>
+			<li>사용자 스타일 - 실제 웹을 사용하는 유저</li>
+			<li>제작자 스타일 - 웹퍼블리셔 등</li>
+			<li>브라우저 기본 스타일</li>
+		</ol>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>중요도가 같을 경우 적용범위에 따라 우선순위 결정</h2>
+		<ol>
+			<li>!important</li>
+			<li>인라인 스타일</li>
+			<li>id 스타일</li>
+			<li>class 스타일</li>
+			<li>타입 스타일: p, h1, h2 { }</li>
+		</ol>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>중요도, 적용범위가 같다면 작성 순서에 따라 우선순위 결정</h2>
+		<p>나중에 쓴 것이 우선순위가 높다 (앞의 것을 덮어씀)</p>
+
+		<style>
+			#priority-test {
+				border: 1px solid chocolate;
+				padding: 1.2rem;
+			}
+
+			#priority-test p { color: red !important}
+			#priority-test p { color: green}
+		</style>
+		<div id="priority-test">
+			<p style="color: blue">적용순위 테스팅</p>
+			<p style="color: blue !important">적용순위 테스팅</p>
+		</div>
+	</section>
+
+	<hr>
+
+	<section id="font-family">
+		<style>
+			#font-family { font-size: 20px;}
+			#font-family h2 { font-size: 2rem;}
+			#font-family p { font-variant: small-caps;}
+			#font-family p.fs1 { font-size: 300%; font-variant: normal;}
+		</style>
+		<h2>폰트</h2>
+		<p>폰트를 관리하는 속성 들 abcdefg hijklmn</p>
+		<p class="fs1">font-size: 300%</p>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>글자 크기를 조정하는 font-size 속성</h2>
+		<p>
+			.my-class { font-size: 절대크기 | 상대크기 | 크기 | 백분율 }
+		</p>
+		<ol>
+			<li><b>절대크기</b>: 브라우저에서 지정한 글자크기</li>
+			<li><b>상대크기</b>: 부모 요소의 글자크기를 기준으로 상대적인 글자 크기를 지정</li>
+			<li><b>크기</b>: 브라우저와 상관없이 글자 크기를 직접 지정</li>
+			<li><b>백분율</b>: 부모 요소의 글자크기를 기준으로 백분율(%)로 표시</li>
+		</ol>
+		<p>
+				font-size: xx-small &lt; x-small &lt; small &lt; medium &lt; large &lt; x-large &lt; xx-large
+		</p>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>글자 크기 단위</h2>
+		<ul>
+			<li><b>em</b>: 부모 요소에서 지정한 글꼴의 대문자 M의 너비를 기준으로(1em)으로 한 후 비율값 지정</li>
+			<li><b>rem</b>: 문서 시작부분(root)에서 지정한 크기를 기준(1rem)으로 한 후 비율값을 지정</li>
+			<li><b>ex</b>: 해당 글꼴의 소문자 x의 높이를 기준(1ex)으로 한 후 비율값을 지정</li>
+			<li><b>px</b>: 모니터의 1픽셀을 기준(1px)으로 한 후 비율값을 지정</li>
+			<li><b>pt</b>: 포인트라고 함, 일반 문서에서 많이 사용됨</li>
+		</ul>
+	</section>
+
+	<hr>
+
+	<section id="percentage-fs-test">
+		<style>
+			#percentage-fs-test .parent {
+				font-size: 12px;
+				font-weight: 500;
+			}
+
+			#percentage-fs-test .parent > span { display: block; line-height: 180%; font-size: 200%;}
+			#percentage-fs-test .parent > span:first-of-type { font-size: 100%;}
+			#percentage-fs-test .parent > span:last-of-type { font-size: 300%;}
+		</style>
+
+		<h2>백분율을 사용하여 글자크기 지정하기</h2>
+		<p>백분율은 부모 요소의 글자 크기를 기준으로 계산하여 지정하는 방법</p>
+		<p>단, 백분율로 계산하려면 부모 요소의 글꼴 크기가 font-size: 16px 처럼 단위로 표현되어 있어야 함</p>
+
+		<div class="parent">
+			<span>font-size: 100%</span>
+			<span>font-size: 200%</span>
+			<span>font-size: 300%</span>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>웹폰트</h2>
+		<h3>예제: 구글 폰트</h3>
+		<p>@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');</p>
+		<p>
+			.my-web-font {
+				font-family: 'Gugi', cursive;
+			}
+		</p>
+		<p style="font-family: 'Gugi', cursive; font-size: 2rem;">구글 폰트를 적용합니다!</p>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>색상 rgba 사용하기</h2>
+		<p>4번째 속성으로 투명도 적용</p>
+		<p>h1 { color: rgba(0, 0, 255, .5)}</p>
+		<div style="
+			padding: 1.5rem;
+			background-image: url(./assets/image/img_01.jpg);
+		">
+			<h1 style="
+				color: rgba(0, 0, 0, .4);
+				font-weight: bolder;
+				font-family: 'Gugi', cursive; font-size: 2rem;
+			">이곳에 투명도를 적용해 봅니다.</h1>
+			<h2 style="
+				color: rgb(0, 0, 0);
+				font-weight: bolder;
+				font-family: 'Gugi', cursive; font-size: 2rem;
+			">이곳에는 투명도를 적용 안해요.</h2>
+		</div>
+	</section>
+
+	<hr>
+
+	<section id="text-align-test">
+		<h2>텍스트를 정렬하는 속성</h2>
+		<style>
+			#text-align-test { text-align: center;}
+			#text-align-test b { color: rgb(26, 77, 187);}
+			#text-align-test em { font-style: normal; color: rgb(225, 34, 85);}
+
+			#text-align-test > p { display: block; border: 1px solid greenyellow;}
+			#text-align-test > p.a { text-align: start }
+			#text-align-test > p.b { text-align: end }
+			#text-align-test > p.c { text-align: left }
+			#text-align-test > p.d { text-align: right }
+			#text-align-test > p.e { text-align: center }
+			#text-align-test > p.f { text-align: justify }
+			#text-align-test > p.g { text-align: match-parent }
+		</style>
+
+		<p class="a"><b>text-align: <em>start</em></b> 현재 줄의 시작에 맞추어 정렬</p>
+		<p class="b"><b>text-align: <em>end</em></b> 현재 줄의 끝에 맞추어 정렬</p>
+		<p class="c"><b>text-align: <em>left</em></b> 왼쪽에 맞추어 정렬</p>
+		<p class="d"><b>text-align: <em>right</em></b> 오른쪽에 맞추어 정렬</p>
+		<p class="e"><b>text-align: <em>center</em></b> 가운데에 맞추어 정렬</p>
+		<p class="f"><b>text-align: <em>justify</em></b> 양쪽에 맞추어 정렬 - 오른쪽에 여백이 생기지 않게 채움</p>
+		<p class="g"><b>text-align: <em>match-parent</em></b> 부모 요소의 정렬에 따름</p>
+	</section>
+
+	<hr>
+
+	<section id="line-height-test">
+		<h2>줄 간격을 조절</h2>
+		<style>
+			#line-height-test p { font-size: 12px;}
+			#line-height-test p.a { line-height: 2.0; }
+			#line-height-test p.b { line-height: 200%; }
+			#line-height-test p.c { line-height: 24px; }
+		</style>
+
+		<p>line-height (줄간격)은 글자 크기를 기준으로 몇 배수인지 백분율이나 1.0, 2.0 등으로 지정할 수 있고, 정확한 단위로 지정할 수 있다.</p>
+
+		<h3>폰트 크기 <b style="color: rgb(225, 34, 85);">font-size: 12px</b></h3>
+
+		<p class="a">
+			<b style="color:rgb(225, 34, 85)">line-height: 2.0</b>
+			6일 대전시약사회 등에 따르면 유성구 봉명동에 한 약국을 운영하던 A(42)씨가 이날 구청에 폐업신고서를 제출했다. A씨는 약국에 대한 소문이 많이 나고 유사한 판매방식을 계속 유지할 수 없다고 판단, 폐업 결정을 내린 것으로 알려졌다. 하지만 A씨는 이와 관련, 폐업신고서를 제출하지 않았다며 부인하고 있다. 앞서 지난해 12월 24일 봉명동에서 약국을 개업한 A씨는 마스크, 피로회복제, 두통약, 소화제 등에 5만원의 가격을 책정, 명시하고 판매했다.
+		</p>
+
+		<p class="b">
+			<b style="color:rgb(225, 34, 85)">line-height: 200%</b>
+			6일 대전시약사회 등에 따르면 유성구 봉명동에 한 약국을 운영하던 A(42)씨가 이날 구청에 폐업신고서를 제출했다. A씨는 약국에 대한 소문이 많이 나고 유사한 판매방식을 계속 유지할 수 없다고 판단, 폐업 결정을 내린 것으로 알려졌다. 하지만 A씨는 이와 관련, 폐업신고서를 제출하지 않았다며 부인하고 있다. 앞서 지난해 12월 24일 봉명동에서 약국을 개업한 A씨는 마스크, 피로회복제, 두통약, 소화제 등에 5만원의 가격을 책정, 명시하고 판매했다.
+		</p>
+
+		<p class="c">
+			<b style="color:rgb(225, 34, 85)">line-height: 24px</b>
+			6일 대전시약사회 등에 따르면 유성구 봉명동에 한 약국을 운영하던 A(42)씨가 이날 구청에 폐업신고서를 제출했다. A씨는 약국에 대한 소문이 많이 나고 유사한 판매방식을 계속 유지할 수 없다고 판단, 폐업 결정을 내린 것으로 알려졌다. 하지만 A씨는 이와 관련, 폐업신고서를 제출하지 않았다며 부인하고 있다. 앞서 지난해 12월 24일 봉명동에서 약국을 개업한 A씨는 마스크, 피로회복제, 두통약, 소화제 등에 5만원의 가격을 책정, 명시하고 판매했다.
+		</p>
+
+		<h3>텍스트를 세로로 가운데 정렬시 사용</h3>
+		<p>박스의 높이를 line-height 와 동일하게 해주면 됨</p>
+		<div style="
+			height: 200px;
+			line-height: 200px;
+			text-align: center;
+			background-color: rgb(26, 77, 187);
+			color: seashell;
+		">
+			텍스트를 세로로 가운데 정렬
+			*height: 200px;
+			*line-height: 200px;
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>텍스트에 그림자 적용</h2>
+		<p style="
+			text-shadow: 2px -2px .2rem sienna;
+		">
+			. { text-shadow: none | 가로거리, 세로거리, 번짐정도, 색상;}
+		</p>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>텍스트의 대소문자 변환</h2>
+		<h3>text-transform</h3>
+		<pre>
+<b>none</b>: 줄을 표시하지 않음
+<b>capitalize</b>: 첫 번째 글자를 대문자로 변환
+<b>uppercase</b>: 모든 글자를 대문자로 변환
+<b>lowercase</b>: 모든 글자를 소문자로 변환
+<b>full-width</b>: 가능한 한 모든 문자를 전각 문자로 변환
+
+<b>전각문자</b>: 가로와 세로의 비율이 같은 글자
+<b>반각문자</b>: 가로와 세로의 비율이 1:2 인 글자
+		</pre>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>목록 스타일</h2>
+		<h3>list-style-type</h3>
+		<h4 style="color: darkblue;">list-style-type: <b style="color: rgb(206, 19, 19)">decimal-leading-zero</b></h4>
+		<ul style="
+			list-style-type: decimal-leading-zero;
+			list-style-position: inside;
+			padding: 1.4rem;
+			background-color: chocolate;
+			color: cornsilk;
+		">
+			<li>목록 A</li>
+			<li>목록 B</li>
+			<li>목록 C</li>
+		</ul>
+		<pre>
+<b>disc</b>: 채운 원 모양
+<b>circle</b>: 빈 원 모양
+<b>square</b>: 채운 사각형 모양
+<b>decimal</b>: 1부터 시작하는 10진수
+<b>decimal-leading-zero</b>: 앞에 0이 붙는 10진수 (01, 02, 03 ...)
+<b>lower-roman</b>: 로마 숫자 소문자
+<b>upper-roman</b>: 로마 숫자 대문자
+<b>lower-alpha | lower-latin</b>: 알파벳 소문자
+<b>upper-alpha | upper-latin</b>: 알파벳 대문자
+<b>none</b>: 없앰
+		</pre>
+
+		<h3>list-style-image</h3>
+		<p>기본 스타일을 사용하지 않고 이미지를 사용함</p>
+
+		<h3>list-style-position</h3>
+		<pre>
+<b>inside</b>: 실제 내용이 시작되는 위치보다 안으로
+<b>outside</b>: 기본 값
+		</pre>
+
+		<h3>list-style</h3>
+		<p>-type, -image, -position 속성을 한번에 작성가능</p>
+		<pre>
+<b>lower-alpha inside</b>: 소문자, 들여쓰기효과 한번에
+<b>inside url('이미지 경로')</b>: 들여쓰기효과, 이미지적용 한번에
+		</pre>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>표 스타일</h2>
+		<pre>
+<b>caption-side</b>:
+  top - 캡션을 표 윗 부분에
+  bottom - 캡션을 표 아랫부분에
+
+<b>border</b>: 표에 테두리 추가
+
+<b>border-spacing</b>: 수평거리 수직거리
+  셀과 셀 사이의 여백 조정
+    수평거리와 수직거리를 공백으로 구분하여 추가
+    동일하다면 하나만
+
+<b>border-collapse</b>:
+  collapse - 표와 셀의 테두리를 합쳐 하나로 표시
+  separate - 표와 셀의 테두리를 따로 표시(기본값)
+		</pre>
+
+		<h3>테스트</h3>
+		<style>
+			#p235-test {
+				width: 100%;
+				border: 1px solid black;
+				border-spacing: 0;
+				border-collapse: collapse;
+			}
+			#p235-test th,
+			#p235-test td {
+				padding: 10px;
+				border: 1px solid black;
+			}
+
+			#p235-test tr:first-of-type {
+				background-color: #ddd;
+			}
+
+			#p235-test col:first-child {
+				background-color: #ddd;
+				width: 30%;
+			}
+			
+			#p235-test col:last-child {
+				background-color: rgb(255, 250, 182);
+				width: 35%;
+			}
+		</style>
+		<table id="p235-test">
+			<colgroup>
+				<col>
+				<col span="2">
+			</colgroup>
+
+			<tr>
+				<th>구분</th>
+				<th>성인</th>
+				<th>독서자</th>
+			</tr>
+			<tr>
+				<th>종이책</th>
+				<td>6.1권</td>
+				<td>11.8권</td>
+			</tr>
+			<tr>
+				<th>전자책</th>
+				<td>1.2권</td>
+				<td>7.1권</td>
+			</tr>
+			<tr>
+				<th>오디오북</th>
+				<td>0.2권</td>
+				<td>5.5권</td>
+			</tr>
+		</table>
+	</section>
+</body>
+</html>

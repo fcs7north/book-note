@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요점 정리</title>
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/style.css3.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="./">시멘틱 태그 요점 정리</a></li>
+				<li><a href="./css.html">CSS 요점 정리</a></li>
+				<li><a href="./css2.html">CSS와 박스 모델</a></li>
+				<li><a href="./css3.html" class="on">트랜지션과 애니메이션</a></li>
+				<li><a href="./css4.html">반응형 웹과 미디어 쿼리</a></li>
+			</ul>
+		</nav>
+
+		<h1>트랜지션과 애니메이션</h1>
+	</header>
+
+	<section id="p356a">
+		<h2>transform 과 변형 함수</h2>
+		<div class="photo">
+			<b>transform</b>: <em>translate</em>(50px[x축], 100px[y축]);
+
+		</div>
+
+		<hr>
+
+		<h3>2차원 변형함수 종류</h3>
+		<pre>
+<b>transform</b>:
+  <em>translate(tx, ty)</em> { 지정한 크기만큼 x, y 로 이동 }
+  <em>translateX(tx)</em> { 지정한 크기만큼 x 로 이동 }
+  <em>translateY(ty)</em> { 지정한 크기만큼 y 로 이동}
+  <em>scale(sx, sy)</em> { 지정한 크기만큼 x, y 로 확대|축소 }
+  <em>scaleX(sx)</em> { 지정한 크기만큼 x 로 확대|축소 }
+  <em>scaleY(sy)</em> { 지정한 크기만큼 y 로 확대|축소 }
+  <em>rotate(각도)</em> { 지정한 각도만큼 회전 }
+  <em>skew(ax, ay)</em> { 지정한 각도만큼 x, y 로 왜곡 }
+  <em>skewX(ax)</em> { 지정한 각도만큼 x 로 왜곡 }
+  <em>skewY(ay)</em> { 지정한 각도만큼 y 로 왜곡 }
+		</pre>
+
+		<hr>
+
+		<h3>3차원 변형함수 종류</h3>
+		<pre>
+<b>transform</b>:
+  <em>translate3d(tx, ty, tx)</em> { 지정한 크기만큼 x, y, z 로 이동 }
+  <em>translateZ(tz)</em> { 지정한 크기만큼 z 로 이동 }
+  <em>scale3d(sx, sy, sz)</em> { 지정한 크기만큼 x, y, x 로 확대|축소 }
+  <em>scaleZ(sz)</em> { 지정한 크기만큼 z 로 확대|축소 }
+  <em>rotate(rx, ry, 각도)</em> { 지정한 각도만큼 회전 }
+  <em>rotate3d(rx, ry, rz, 각도)</em> { 지정한 각도만큼 회전 }
+  <em>rotateX(각도)</em> { 지정한 각도만큼 x 로 회전 }
+  <em>rotateY(각도)</em> { 지정한 각도만큼 y 로 회전 }
+  <em>rotateZ(각도)</em> { 지정한 각도만큼 z 로 회전 }
+  <em>perspective(길이)</em> { 부모 요소에, 입체적으로 보일 수 있도록 깊잇값 지정 }
+		</pre>
+
+		<h4>테스트</h4>
+		<div class="test-3d">
+			부모 요소
+			<p>
+				자식 요소
+				<br>
+				transform: rotate3d(45, 30, 10, 50deg)
+			</p>
+			<p>
+				자식 요소
+			</p>
+			<p class="skewxy">
+
+			</p>
+		</div>
+	</section>
+
+	<hr>
+
+	<section id="p367a">
+		<h2>트랜지션</h2>
+
+		<pre>
+<b>transition-property</b>: 트랜지션의 대상을 지정
+<em>all | none | 속성이름(특정한 속성에만 적용할 경우)</em>
+
+<b>transition-duration</b>: 트랜지션을 실행할 시간을 지정
+<em>시간 - 예: 1s 2s;</em>
+
+<b>transition-timing-function</b>: 트랜지션의 실행 형태를 지정
+<em>트랜지션의 시작, 중간, 끝에서 속도를 지정해
+전체 속도 곡선을 만들 수 있다
+예
+  linear: 천천히 - 점점 빨라짐 - 천천히 (기본값)
+  ease: 속도 동일
+  ease-in: 느리게 시작
+  ease-out: 느리게 끝
+  ease-in-out: 느리게 시작, 느리게 끝
+  cubic-bezier(n, n, n, n): 베지에 함수 정의,
+                           n 값은 0~1 사이만 가능</em>
+
+<b>transition-delay</b>: 트랜지션의 지연 시간을 지정
+<em>지연시간을 지정, 지정한 시간만큼 기다린 후 시작</em>
+
+<b>transition</b>: 위 4가지 속성을 한번에 지정
+<em>작성 순서는 상관없음
+단, 시간 값이 두개(진행, 지연)이므로,
+앞이 진행(transition-duration),
+뒤를 지연(transition-delay) 으로 간주함
+</em>
+		</pre>
+
+		<div>1</div>
+		<div>2</div>
+		<div>
+			transition-property: width, height
+			<br>
+			transition-duration: 2s, .5s
+		</div>
+		<div>
+			transition-delay: 2s
+			<br>
+			transition-timing-function:
+			<br>
+			cubic-bezier(0.23, 1, 0.320, 1)
+		</div>
+		<div>
+			한번에 적용<br>
+			transition: 1s ease<br>
+		</div>
+
+		<div>
+			<p><img src="./assets/image/img_01.jpg" alt=""></p>
+			<ul>
+				<li>제품명: 카라반 쓰리타임</li>
+				<li>가격: 300,000원</li>
+				<li>제조일: 2019.05.15</li>
+			</ul>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>애니메이션</h2>
+		<p>자바스크립트를 사용할 필요 없어짐</p>
+		<pre>
+키프레임 설정
+<b>@keyframes</b> 키프레임_이름 {
+  <em>from</em> { 애니메이션 전 상태 }
+  <em>to</em> { 애니메이션 후 상태 }
+}
+
+  <b>animation-delay</b>: 지연 시작 지정
+  <b>animation-direction</b>: 애니메이션 종료 뒤 처음부터 시작할 지, 역방향으로 진행할 지 지정
+    <em>normal</em> from 에서 to 로
+    <em>reverse</em> to 에서 from 으로
+    <em>alternate</em> normal 후 reverse
+    <em>alternate-reverse</em> reverse 후 normal
+
+  <b>animation-duration</b>: 애니메이션 실행 시간
+  <b>animation-iteration-count</b>: 애니메이션의 반복 횟수 지정
+  <b>animation-name</b>: @keyframes 로 설정해 놓은 중간 상태 지정
+  <b>animation-timing-function</b>: 키프레임의 전환 형태 지정
+  <b>animation</b>: 모든 속성을 한번에 묶어서 지정
+		</pre>
+
+		<div id="p379a">
+			<div>1</div>
+			<div>2</div>
+			<div>3 축약하기</div>
+		</div>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>테스팅</h2>
+		<div id="p386a">
+			<button>메뉴 버튼</button>
+
+			<div><img src="./assets/image/img_01.jpg" alt=""></div>
+		</div>
+	</section>
+</body>
+</html>

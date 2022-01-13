@@ -1,0 +1,30 @@
+ul > li b,
+ul > li strong { color: rgb(208, 18, 18);}
+ul > li em { color: rgb(14, 64, 170); font-style: normal; font-weight: bold;}
+
+#p392a {
+	text-align: center;
+	font-size: 5vw;
+}
+
+@media only screen and (min-width: 400px) and (max-width: 450px) {
+	#p396a > b { display: none;}
+	#p396a::before {
+		content: "해당할 경우만 추가됨";
+		font-size: 2rem;
+		font-weight: bold;
+		background: blue;
+		color: white;
+	}
+}
+
+@media only screen and (width: 399px) {
+	#p396a > b { display: none;}
+	#p396a::after {
+		content: "399px 에서만 보임";
+		font-size: 2rem;
+		font-weight: bold;
+		background: blueviolet;
+		color: white;
+	}
+}
