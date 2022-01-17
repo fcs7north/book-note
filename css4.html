@@ -143,5 +143,190 @@
 	
 	<hr>
 
+	<section id="p437a-gird">
+		<h2>그리드 레이아웃</h2>
+		<p>제작, 유지보수 및 관리를 편리하게 함</p>
+
+		<h3>플렉서블 박스 레이아웃</h3>
+		<p>수평이나 수직 방향 중 한 쪽을 주축으로 정하고 박스 배치</p>
+		<p>예: 수평으로 정했다면, 왼쪽에서 오른쪽으로 배치되다가 화면 너비를 넘어가면 수직으로 이동하여 왼쪽부터 배치 시작</p>
+		<p>IE11 의 경우 일부만 지원함 (caniuse.com 에서 확인)</p>
+
+		<h4>예제</h4>
+
+		<div id="p413flexbox">
+			부모 박스
+			<p>플렉스 컨테이너(부모 박스): 플렉스 박스 레이아웃을 적용할 대상을 묶음</p>
+			<div>
+				<div>
+					<p>
+						<b>자식박스 01</b>
+						<br>
+						플렉스 항목(자식 박스): 플렉스 레이아웃 적용대상
+					</p>
+				</div>
+				<div>자식박스 02</div>
+				<div>자식박스 03</div>
+				<div>자식박스 04</div>
+				<div>자식박스 05</div>
+			</div>
+		</div>
+
+		<h4>항목을 배치하는 속성</h4>
+		<pre>
+<b>justify-content</b>: 주축 방향의 정렬 방법
+<b>align-items</b>: 교차축 방향의 정렬 방법
+<b>align-self</b>: 교차축에 있는 개별 항목의 정렬 방법
+<b>align-content</b>: 교차축에서 여러 줄로 표시된 항목의 정렬 방법
+		</pre>
+
+		<h4>플렉스 컨테이너 지정하는 display 속성</h4>
+		<pre>
+<b>display</b>: <em>flex</em> (컨테이너 안의 플렉스 항목을 블록 레벨 요소로 배치);
+<b>display</b>: <em>inline-flex</em> (인라인 레벨 요소로 배치);
+		</pre>
+
+		<h4>flex-direction 플렉스 방향을 지정</h4>
+		<pre>
+<b>row</b>: (주축을 가로로 지정 및 왼쪽에서 오른쪽으로 배치. 기본값)
+<b>row-reverse</b>: (주축을 가로로 지정 및 오른쪽에서 왼쪽으로 배치)
+<b>column</b>: (주축을 세로로 지정 및 위쪽에서 아래쪽으로 배치)
+<b>column-reverse</b>: (주축을 세로로 지정 및 아래쪽에서 위쪽으로 배치)
+		</pre>
+
+		<h4>플렉스 항목의 줄을 바꾸는 flex-wrap 속성</h4>
+		<pre>
+<b>nowrap</b>: 줄바꿈 없음, 한 줄에 표시, 기본값
+<b>wrap</b>: 줄바꿈
+<b>wrap-reverse</b>: 줄을 바꾸고, 시작점과 끝점을 바꿈. 즉 줄이 반대로 바뀜(아래에서 위 또는 오른쪽에서 왼쪽으로)
+		</pre>
+
+		<h4>배치 방향과 줄 바꿈을 한번에 지정: flex-flow</h4>
+		<pre>
+<b>row wrap</b>: 왼쪽에서 오른쪽, 줄바꿈
+<b>row nowrap</b>: 왼쪽에서 오른쪽, 한 줄로
+		</pre>
+
+		<h4>주축 정렬 방법 지정: justify-content</h4>
+		<pre>
+<b>flex-start</b>: 주축의 시작점에 맞춰 배치
+<b>flex-end</b>: 주축의 끝점에 맞춰 배치
+<b>center</b>: 주축의 중앙에 맞춰 배치
+<b>space-between</b>: 첫 번째 항목과 끝 항목을 주축의 시작점과 끝점에 배치한 후 나머지 중간 항목들은 같은 간격으로 배치
+<b>space-around</b>: 모든 항목을 주축에 동일한 간격으로 배치
+		</pre>
+
+		<h4>교차축 정렬 방법 지정: align-items</h4>
+		<pre>
+<b>flex-start</b>: 교차축의 시작점에 맞춰 배치
+<b>flex-end</b>: 교차축의 끝점에 맞춰 배치
+<b>center</b>: 교차축의 중앙에 배치
+<b>baseline</b>: 교차축의 문자 기준선에 맞춰 배치
+<b>stretch</b>: 플렉스 항목을 늘려 교차축에 가득 차게 배치
+		</pre>
+
+		<h4>특정 항목의 정렬 방법 지정(자식 항목에서 사용):  align-self</h4>
+		<pre>
+<b>flex-start</b>
+<b>flex-end</b>
+<b>center</b>
+<b>baseline</b>
+<b>stretch</b>
+		</pre>
+
+		<h4>여러 줄일 때 교차축 정렬 방법을 지정하는 속성</h4>
+		<pre>
+<b>flex-start</b>: 교차축의 시작점에 맞춰 배치
+<b>flex-end</b>: 교차축의 끝점에 맞춰 배치
+<b>center</b>: 교차축의 중앙에 맞춰 배치
+<b>space-between</b>: 처음과 끝 항목은 시작과 끝에 맞추고 중간 항목들은 동일한 간격으로 배치
+<b>space-around</b>: 모든 항목을 동일한 간격으로 배치
+<b>stretch</b>: 항목을 늘려서 교차축에 가득 차게 배치
+		</pre>
+
+		<hr>
+
+		<h3>CSS 그리드 레이아웃</h3>
+		<p>플렉스 레이아웃은 1차원이지만, CSS 그리드 레이아웃은 2차원</p>
+		<p>수평, 수직 어느 방향이든 배치 가능</p>
+		<p>레고 블록을 맞추듯 할 수 있음</p>
+		<p>대부분의 모던 브라우저에서 사용가능</p>
+
+		<h4>특징</h4>
+		<p>가로 방향의 "줄"과 세로 방향의 "칼럼"으로 화면 구성</p>
+		<p>가장 최신의 레이아웃 제작 방법</p>
+
+
+		<h4>그리드 컨테이너를 지정하는 속성</h4>
+		<pre>
+<b>grid</b>: 컨테이너 안의 항목을 블록 레벨 요소로 배치
+<b>inline-grid</b>: 인라인 레벨 요소로 배치
+		</pre>
+
+		<h4>칼럼과 줄을 제어하는 속성들</h4>
+		<pre>
+<strong>너비 200px 칼럼 * 3개</strong>
+<em><b>grid-template-columns</b>: 200px 200px 200px</em>
+
+
+<strong>줄 높이 100px</strong>
+<em><b>grid-template-rows</b>: 100px</em>
+
+
+<strong>상대크기 1대 1대 1인 칼럼 * 3개</strong>
+<em><b>grid-template-columns</b>: 1fr 1fr 1fr</em>
+
+
+<strong>상대크기 1대 1대 1인 칼럼 * 3개를 반복함수로</strong>
+<em><b>grid-template-columns</b>: repeat(3, 1fr)</em>
+
+
+<strong>minmax 함수</strong>
+<strong>줄 높이 최소 100px, 최대 auto</strong>
+<em><b>grid-template-rows</b>: minmax(100px, auto)</em>
+
+
+<strong>자동으로 칼럼 갯수를 조절하는 값</strong>
+<strong>너비 200px인 칼럼을 화면 너비에 가득 찰 때까지 배치</strong>
+<em><b>grid-template-columns</b>: repeat(auto-fit, 200px)</em>
+
+
+<strong><b>auto-fit</b>: 화면이 넓을 때에는 남는 공간 없이 채움</strong>
+<em><b>grid-template-columns</b>: repeat(auto-fit, minmax(200px, 1fr))</em>
+
+
+<strong><b>auto-fill</b>: 칼럼의 최소 너비만 표시하고 남는 공간을 채우지 않음</strong>
+<em><b>grid-template-columns</b>: repeat(auto-fill, minmax(200px, 1fr))</em>
+
+
+<strong>그리드 항목을 지정하는 속성</strong>
+<em><b>column-gap</b>: 컬럼과 컬럼사이의 간격 지정 (20px)</em>
+<em><b>row-gap</b>: 줄과 줄 사이의 간격 지정 (30px)</em>
+<em><b>gap</b>: 두 종류의 간격을 한번에 지정 (20px 30px)</em>
+<strong>플렉스의 <b>justify-content</b>, <b>align-content</b> 등의 속성도 사용 가능 </strong>
+
+
+<strong>그리드 라인을 이용해 배치하는 속성</strong>
+<em><b>grid-column-start</b>: 칼럼 시작의 라인 번호 지정</em>
+<em><b>grid-column-end</b>: 칼럼 마지막 라인 번호 지정</em>
+<em><b>grid-column</b>: 시작, 마지막 번호 한번에 (예: 1/4)</em>
+<em><b>grid-row-start</b>: 줄 시작의 라인 번호 지정</em>
+<em><b>grid-row-end</b>: 줄 마지막 라인 번호 지정</em>
+<em><b>grid-row</b>: 시작, 마지막 번호 한번에 (예: 2/4)</em>
+
+
+<strong>템플릿 영역을 만들어 배치</strong>
+<strong>번호를 사용하지 않아도 되고, 직관적이라 편리</strong>
+<strong>빈 곳은 .(마침표) 로 표시</strong>
+.box-1 { <b>grid-area</b>: <em>box1</em> }
+.box-2 { <b>grid-area</b>: <em>box2</em> }
+
+<b>grid-template-areas</b>:
+  "<em>box1  box1  box2</em>"
+  "<em>box1  box1  box2</em>"
+  "<em>  .    .    box2</em>"
+		</pre>
+	</section>
+
 </body>
 </html>

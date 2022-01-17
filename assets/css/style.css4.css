@@ -28,3 +28,70 @@ ul > li em { color: rgb(14, 64, 170); font-style: normal; font-weight: bold;}
 		color: white;
 	}
 }
+
+#p413flexbox {
+	padding: 1rem;
+	background: #eee;
+}
+
+#p413flexbox > div {
+	height: 500px;
+	display: flex;
+	justify-content: space-around;
+	align-content: stretch;
+	/* align-items: flex-end; */
+	/* row-gap: 1rem; */
+
+	/* flex-wrap: nowrap; */
+	/* flex-wrap: wrap; */
+	/* flex-wrap: wrap-reverse; */
+
+	/* flex-direction: row; */
+	/* flex-direction: row-reverse; */
+	/* flex-direction: column; */
+	/* flex-direction: column-reverse; */
+
+	/* flex-flow: row-reverse wrap-reverse; */
+	flex-flow: row wrap;
+}
+
+#p413flexbox > div > div {
+	width: 100px;
+	min-height: 5rem;
+	background: rgb(194, 41, 41);
+	color: #eee;
+}
+
+/* align-self 적용 */
+#p413flexbox > div > div:nth-of-type(2) {
+	align-self: center;
+	color: yellow;
+	font-weight: bold;
+	font-size: 1.3rem;
+	word-break: keep-all;
+	text-align: center;
+}
+#p413flexbox > div > div:nth-of-type(2)::before {
+	display: block;
+	content: "align-self: center 적용";
+	padding: .5rem;
+	font-size: 1rem;
+	color: white;
+	font-weight: normal;
+}
+
+#p413flexbox > div > div:nth-of-type(4) {
+	align-self: flex-end;
+}
+#p413flexbox > div > div:nth-of-type(4)::before {
+	display: block;
+	content: "align-self: flex-end 적용";
+	padding: .5rem;
+}
+
+#p437a-gird strong {
+	font-family: 'Gugi', cursive;
+	color: rgb(28, 135, 7);
+	font-weight: normal;
+	font-size: .90rem;
+}
